@@ -1,0 +1,12 @@
+# Audio Processing
+whisperx
+torch
+torchaudio
+
+# Multi-Agent Orchestration
+langgraph
+langchain-community
+
+# UI & Validation
+streamlit
+pydantic
