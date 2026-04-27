@@ -9,7 +9,7 @@ def get_llm(temperature=0.1):
     
     # ChatOllama connects seamlessly to the background Ollama service
     llm = ChatOllama(
-        model="qwen2.5:3b", # Ensure this matches the tag you pulled in the terminal
+        model="qwen3.5:9b", # Ensure this matches the tag you pulled in the terminal
         base_url="http://localhost:11434",
         temperature=temperature 
     )

@@ -1,6 +1,7 @@
 # Audio Processing
 whisperx
 torch
+torchvision
 torchaudio
 
 # Multi-Agent Orchestration
@@ -10,3 +11,5 @@ langchain-community
 # UI & Validation
 streamlit
 pydantic
+
+pyannote.audio

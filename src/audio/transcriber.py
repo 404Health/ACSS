@@ -23,7 +23,7 @@ def process_clinical_audio(audio_file_path: str) -> str:
         # 3. Load and process the audio file
         print("   (Listening and transcribing...)")
         audio = whisperx.load_audio(audio_file_path)
-        result = model.transcribe(audio, batch_size=8)
+        result = model.transcribe(audio, batch_size=8, language="en")
         
         # 4. Combine all the timestamped chunks into one paragraph
         full_transcript = " ".join([segment["text"] for segment in result["segments"]])
@@ -33,6 +33,14 @@ def process_clinical_audio(audio_file_path: str) -> str:
         
     except Exception as e:
         print(f"   ❌ Audio Processing Error: {e}")
+        if "Could not import module 'Pipeline'" in str(e):
+            try:
+                import torchvision
+                import transformers
+                print(f"   • torch {torch.__version__}, torchvision {torchvision.__version__}, transformers {transformers.__version__}")
+            except Exception as version_err:
+                print(f"   • Failed to inspect deep learning runtime versions: {version_err}")
+            print("   • This usually indicates a torch/torchvision compatibility issue.")
         return "Error processing audio file."
 
 # --- Local Test ---
